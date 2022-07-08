@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
 
 function App() {
+  const [tasks, setTasks] = React.useState([]);
+  const [currentTask, setCurrentTask] = React.useState("");
+
+  function handleClick(event) {
+    const target = event.target;
+  }
+
+  function handleChange(event) {
+    const target = event.target;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label htmlFor="task">Enter a new task here:</label>
+      <input
+        type="text"
+        name="task"
+        id="task"
+        placeholder="Task"
+        value={currentTask}
+        onChange={handleChange}
+      />
+      <button id="submit" onClick={handleClick}>
+        Submit
+      </button>
     </div>
   );
 }
