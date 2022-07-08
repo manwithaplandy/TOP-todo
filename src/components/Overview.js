@@ -1,11 +1,21 @@
+import Task from "./Task";
+
 export default function Overview(props) {
+  function editTask(event, value) {
+    props.editTask(event);
+  }
+
+  function deleteTask(event) {
+    props.deleteTask(event);
+  }
   const allTasks = props.tasks.map((e) => (
-    <div className="task" key={e.id} id={e.id}>
-      <div>
-        {e.id}: {e.text}
-      </div>
-      <button onClick={props.deleteTask}>x</button>
-    </div>
+    <Task
+      id={e.id}
+      key={e.id}
+      text={e.text}
+      editTask={editTask}
+      deleteTask={deleteTask}
+    />
   ));
 
   return <div className="Overview">{allTasks}</div>;

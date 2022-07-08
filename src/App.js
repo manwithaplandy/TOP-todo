@@ -25,10 +25,18 @@ function App() {
   }
 
   function deleteTask(event) {
-    const target = event.target.parentNode;
-    console.log(target.num);
-    setTasks((prev) => prev.filter((curr) => curr.id != target.id));
-    console.log(tasks);
+    const target = event.target.parentNode.parentNode;
+    setTasks((prev) => prev.filter((curr) => curr.id !== parseInt(target.id)));
+  }
+
+  function editTask(event, value) {
+    const target = event.target.parentNode.parentNode;
+    const index = parseInt(target.id);
+    setTasks((prev) => {
+      return prev.map((task) =>
+        task.id === index ? { ...task, text: value } : task
+      );
+    });
   }
 
   return (
@@ -45,7 +53,7 @@ function App() {
       <button id="submit" onClick={handleClick}>
         Submit
       </button>
-      <Overview tasks={tasks} deleteTask={deleteTask} />
+      <Overview tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
     </div>
   );
 }
