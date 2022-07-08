@@ -24,8 +24,11 @@ function App() {
     setCurrentTask({ id: uniqueID, text: target.value });
   }
 
-  function deleteTask(num) {
-    setTasks((prev) => prev.filter((curr) => curr.id != num));
+  function deleteTask(event) {
+    const target = event.target.parentNode;
+    console.log(target.num);
+    setTasks((prev) => prev.filter((curr) => curr.id != target.id));
+    console.log(tasks);
   }
 
   return (

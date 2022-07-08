@@ -1,6 +1,6 @@
 export default function Overview(props) {
   const allTasks = props.tasks.map((e) => (
-    <div className="task" key={e.id}>
+    <div className="task" key={e.id} id={e.id}>
       <div>
         {e.id}: {e.text}
       </div>
